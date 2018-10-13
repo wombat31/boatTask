@@ -1,6 +1,6 @@
 //create and array
 var boatTimes=["10","10.5","11","11.5","12","12.5","13","13.5","14","14.5","15","15.5","16","16.5","17"];
-var boatOne=[10,10,10,0,0,0,0,0,0,0,0,0,0,0,0];
+var boatOne=[00,00,00,00,00,00,00,00,00,00,00,00,00,00,00];
 const halfHourCost=12;
 const hourCost=20;
 var addHalfHour = false;
@@ -16,26 +16,32 @@ function pushData(){
     var bIn=document.getElementById('boatIn').value;
 
     //get amount of time required
-    var timeOut = boatTimes.indexOf(bIn) - boatTimes.indexOf(bOut);
-
+    var boatOutIndex = boatTimes.indexOf(bOut);
+    var boatInIndex = boatTimes.indexOf(bIn);
+    var timeOut = boatInIndex - boatOutIndex;
     //check whether half hour is required
     if (timeOut == 1 || (timeOut%2) != 0){
         addHalfHour=true;
-    }
+    };
     //check whether boat is available
     /****CODE  REQUIRED HERE****/
 
-    // append data to the array
-    //boatOne.push(inputText);
-    //var pval="";
-    //for (i = 0; i <myArr.length; i++){
-        //pval=pval + myArr[i] + "<br/>";
-    //}
-
-    //display array data
-    //document.getElementById('pText').innerHTML = timeOut;
-    console.log(timeOut,bOut,bIn,addHalfHour,timeOut,timesAvailable);
-    console.log(boatOne);
+    //change array values
+    if (boatOutIndex = 1 && addHalfHour){
+        boatOne[0] = halfHourCost;//this needs looking at......if timeout ==1 and 
+        document.getElementById('pText').innerHTML = "SHould add one lot of half hour hire!";
+    };/*
+    }else{
+    for(i=boatOutIndex;i<(boatOutIndex+timeOut);i++){
+        boatOne[i] = (hourCost/2);
+    };
+    if (addHalfHour){
+        boatOne[(boatOutIndex+timeOut)] = halfHourCost;
+        }
+    };*/
+    //update the html table to reflect arrays
+    //This seems awfully long!!!
+    document.getElementById('11').innerHTML = boatOne[0];
     addHalfHour=false;
 }
 
